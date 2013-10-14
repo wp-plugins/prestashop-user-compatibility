@@ -2,7 +2,7 @@
 Contributors: veganist
 Tags: prestashop, email, login, authentication, users, hash, migrate, password
 Requires at least: 2.8
-Tested up to: 3.5
+Tested up to: 3.6.1
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -23,7 +23,7 @@ In every other case, login will function normally, so if there is an error, it'l
 
 In a while, every former Prestashop user you have imported to your WP DB will have their passwords securely rehashed.
 
-Tested with Prestashop 1.3.5 and Wordpress 3.5.
+Tested with Prestashop 1.3.5 and Wordpress 3.6.1
 
 == Installation ==
 
