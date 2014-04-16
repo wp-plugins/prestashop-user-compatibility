@@ -4,7 +4,7 @@ Plugin Name: Prestashop user compatibility
 Plugin URI: http://curlybracket.net/2012/12/28/prestashop-user-compatibility/
 Description: Prestashop user password rehasher
 Author: Ulrike Uhlig
-Version: 1.1
+Version: 1.15
 Author URI: http://curlybracket.net
 */
 
@@ -73,7 +73,6 @@ function prestashop_user_compat_menu() {
 
 function prestashop_user_compat_page_callback() {
 	echo '<div class="wrap">';
-	screen_icon();
     echo '<h2>Options for Prestashop user compatibility</h2>';
 	echo '<p>Enter here the value of the COOKIE_KEY, found in config/settings.inc.php of your former Prestashop installation.<br />This should look something like CtUKJZE31LzULMLcsspKhF2IrZpOShBe56B42vH15PMMt06WvEDUj5HX</p><form method="post" action="options.php">';
 	settings_fields( 'prestashop-user-compat-group' );
