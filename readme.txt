@@ -2,8 +2,8 @@
 Contributors: veganist
 Tags: prestashop, email, login, authentication, users, hash, migrate, password
 Requires at least: 2.8
-Tested up to: 3.9
-Stable tag: 1.1
+Tested up to: 4.0.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,8 +41,16 @@ There is an example PHP file included to import the database into WP, please che
 
 == Changelog ==
 
+= 1.2 =
+
+* Simplify code for password check
+* Don't attempt to override authentication if a WP_User object exists. Fixes compat with Jetpack (and potentially other auth-related plugins) See WP Email Login
+* Work around a few encoding issues in WP to handle weird characters in emails (' and &) See WP Email Login
+
 = 1.1 =
-Security update : sanitize option input
+
+* Security update : sanitize option input
 
 = 1.0 =
+
 * Initial release
