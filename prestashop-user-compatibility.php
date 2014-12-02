@@ -4,11 +4,11 @@ Plugin Name: Prestashop user compatibility
 Plugin URI: http://curlybracket.net/2012/12/28/prestashop-user-compatibility/
 Description: Prestashop user password rehasher
 Author: Ulrike Uhlig
-Version: 1.15
+Version: 1.2
 Author URI: http://curlybracket.net
 */
 
-/*  Copyright 2012  Ulrike Uhlig  (email : u@curlybracket.net)
+/*  Copyright 2012-2014  Ulrike Uhlig  (email : u@curlybracket.net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -36,6 +36,10 @@ function pw_rehash( $user, $username, $password ) {
 	require_once( ABSPATH . 'wp-includes/class-phpass.php');
 
 	// login via email or username. short piece of code from Beau Lebens' WP Email Login
+	if ( is_a( $user, 'WP_User' ) )
+		return $user;
+
+	$username = str_replace( '&', '&amp;', stripslashes( $username ) );
 	$user = get_user_by( 'email', $username );
 	if ( isset( $user, $user->user_login, $user->user_status ) && 0 == (int) $user->user_status ) {
 		$username = $user->user_login;
@@ -45,13 +49,12 @@ function pw_rehash( $user, $username, $password ) {
 	$ps_salt = get_option('ps-cookie-salt');
 	if(!empty($ps_salt)) {
 		$wp_hashed_pw = $user->user_pass; // password stored in WPDB
-		$plaintext_pw = $password;
-		$ps_hashed_pw = md5($ps_salt.$plaintext_pw);
+		$ps_hashed_pw = md5($ps_salt.$password);
 
 		// this means that the user's password in the DB is an old Prestashop password
 		// if the password is correct, we rehash and update it
 		if($ps_hashed_pw == $user->user_pass) {
-			wp_set_password( $plaintext_pw, $user->id );
+			wp_set_password( $password, $user->id );
 		}
 	}
 
