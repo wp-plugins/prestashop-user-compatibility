@@ -28,6 +28,7 @@ Lately tested successfully with Prestashop 1.5.6.1 and Wordpress 3.9.
 
 == Installation ==
 
+0. Manually import the database of your previous Prestashop customers. See FAQ.
 1. Unzip and upload `/prestashop-user-compatibility/` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure the COOKIE_KEY in the settings menu => Prestashop User Compat. The COOKIE_KEY can be found in your Prestashop installation (config/settings.inc.php)
